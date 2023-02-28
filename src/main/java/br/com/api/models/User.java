@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -18,11 +19,11 @@ public class User {
 	private String phone;
 	private String password;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "client")
     private List<Order> orders = new ArrayList<>();
     
     public User(){}
-
 
     public User(Long id, String name, String email, String phone, String password) {
         this.id = id;
@@ -31,7 +32,6 @@ public class User {
         this.phone = phone;
         this.password = password;
     }
-
 
     public Long getId() {
         return this.id;
