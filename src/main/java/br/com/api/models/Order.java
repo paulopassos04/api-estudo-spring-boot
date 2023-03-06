@@ -38,6 +38,14 @@ public class Order implements Serializable {
         setOrderStatus(orderStatus);
     }
 
+    public Double getTotal(){
+        double sun = 0.0;
+        for (OrderItem x : items){
+            sun += x.getSubtotal();
+        }
+        return sun;
+    }
+
     public Long getId() {
         return id;
     }
